@@ -1,5 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
+import { Entry } from '../entry';
+import { InputService } from '../input.service';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -23,10 +25,13 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map:any;
+  _entry = {} as Entry;
   private selection: any;
+  is: InputService;
   subscription: any;
 
-  constructor() {
+  constructor(is: InputService) {
+    this.is = is;
    }
 
   private initMap(): void {
@@ -52,10 +57,9 @@ export class MapComponent implements AfterViewInit {
         var lat = coord.lat;
         var lng = coord.lng;
         console.log('Tengo una latitud de: ' + lat + ' y una longitud de: ' + lng);
+        this.is.updateLatLng(lat, lng);
         var newLatLng = new L.LatLng(lat,lng);
         this.selection.setLatLng(newLatLng);
-        // var mp = new L.Marker([lat, lng]).addTo(this.map);
-        // alert(mp.getLatLng());
     });
 }
   private putLocation(entry : any) {
@@ -69,5 +73,23 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
     this.selectLocation();
+    this.subscription = this.is.getEmittedValue()
+    .subscribe(item => this._entry = item);
+  }
+
+  get latitude(): number {
+    return this._entry.latitude;
+  }
+  set latitude(newLatitude: number) {
+    console.log(newLatitude);
+    this.is.updateLat(newLatitude);
+  }
+
+  get longitude(): number {
+    return this._entry.longitude;
+  }
+  set longitude(newLongitude: number) {
+    console.log(newLongitude);
+    this.is.updateLat(newLongitude);
   }
 }
