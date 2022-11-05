@@ -25,7 +25,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map:any;
-  _entry = {} as Entry;
+  _entry = new Entry(41.275151, 1.986382)
   private selection: any;
   is: InputService;
   subscription: any;
@@ -36,8 +36,8 @@ export class MapComponent implements AfterViewInit {
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [ 41.38493211800988, 2.117266464856067 ],
-      zoom: 6
+      center: [ this._entry.latitude, this._entry.longitude ],
+      zoom: 11
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -47,7 +47,7 @@ export class MapComponent implements AfterViewInit {
     });
 
     tiles.addTo(this.map);
-    this.selection = new L.Marker([41.38493211800988, 2.117266464856067]).addTo(this.map);
+    this.selection = new L.Marker([this._entry.latitude, this._entry.longitude]).addTo(this.map);
   }
   private selectLocation() {
 
@@ -68,6 +68,10 @@ export class MapComponent implements AfterViewInit {
     var newLatLng = new L.LatLng(lat,lng);
     this.selection.setLatLng(newLatLng)
 
+  }
+
+  upload() {
+    alert("Ahora se envíarian las coordenadas (latitud: "+this._entry.latitude+", longitud: "+this._entry.longitude+".");
   }
 
   ngAfterViewInit(): void {

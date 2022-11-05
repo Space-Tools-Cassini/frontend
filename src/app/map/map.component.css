@@ -5,14 +5,46 @@
   right: 0;
   bottom: 0;
   margin: 30px;
-  margin-top: 100px!important;
+  margin-top: 150px!important;
+  transition: ease-in-out 0.3;
 }
 
 .map-frame {
+  height: 100%;
+  border: 2px solid black;
+  transition: ease-in-out 0.3;
+}
+.map-frame:hover {
   border: 2px solid black;
   height: 100%;
+
 }
 
 #map {
   height: 100%;
+  transition: ease-in-out 0.3;
+}
+
+.intro {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.input {
+  text-align: center;
+}
+.butintro {
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  margin-top: 10px;
+  height: 50px;
+  width: 100px;
+}
+.selector {
+  text-align: right;
+  margin-top: -40px;
+  margin-right: 100px!important;
+  scale: 1.1;
+}
+.selText {
+  text-align: center;
 }
