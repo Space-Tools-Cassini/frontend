@@ -23,6 +23,14 @@ export class InputService {
     this.fire.emit(this.entry);
   }
 
+  updateValues (score: number, temp: number, ph: number, prep: number) {
+    this.entry.score = score;
+    this.entry.temp = temp;
+    this.entry.ph= ph;
+    this.entry.rainfall = prep;
+    console.log("LA NUEVA LLUVIA ES: "+this.entry.rainfall);
+    this.fire.emit(this.entry);
+  }
   updateLatLng(lat: number, lng: number) {
     this.entry.latitude = lat;
     this.entry.longitude = lng;
@@ -31,5 +39,8 @@ export class InputService {
   }
   getEmittedValue() {
     return this.fire;
+  }
+  pushValues() {
+    return this.entry;
   }
 }

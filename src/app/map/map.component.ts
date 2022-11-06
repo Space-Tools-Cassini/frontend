@@ -79,8 +79,10 @@ export class MapComponent implements AfterViewInit {
   }
 
   upload() {
-    alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)}`);
-
+    const score=Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)
+    // alert(`${score}`);
+    this.is.updateValues(score[3],score[0],score[1],score[2]);
+    console.log("la lluvia ahora vale esto chaval: "+this._entry.rainfall);
   }
 
   ngAfterViewInit(): void {

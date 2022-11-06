@@ -3,6 +3,7 @@ import { Cwheat } from '../shared/models/cwheat.model';
 import { Maize } from '../shared/models/maize.model';
 import { Rice } from '../shared/models/rice.model';
 import { Logic } from '../shared/utils/logic.model';
+import { InputService } from '../input.service';
 
 @Component({
   selector: 'app-output',
@@ -11,10 +12,26 @@ import { Logic } from '../shared/utils/logic.model';
 })
 export class OutputComponent implements OnInit {
 
-  constructor() { }
+  is: any;
+  input: any;
+  score: number;
+  temp: number;
+  rain: number;
+  ph: number;
+  constructor(is: InputService) {
+
+    this.is = is
+    this.input = is.pushValues();
+
+  }
 
   ngOnInit(): void {
+
     console.log(Logic.analize(0, 0, new Maize()));
+    this.score = this.input.score.toFixed(2);
+    this.temp  = this.input.temp.toFixed(2);
+    this.rain = this.input.rainfall.toFixed(2);
+    this.ph = this.input.ph.toFixed(2);
   }
 
 }
