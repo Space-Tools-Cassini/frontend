@@ -1,3 +1,5 @@
+import { SoilTypes } from "./soil-types.module";
+
 /** 
  * Crop interface.
  * -----------------
@@ -34,6 +36,6 @@ export class Crop {
     static thresh_prep: [number, number];
 
     // Conditionals
-    static bad_soil: string[];
+    static bad_soil: SoilTypes[];
     static max_co2: number;
 }
