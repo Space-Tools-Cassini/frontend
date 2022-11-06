@@ -4,15 +4,15 @@ export class MathModel {
      * @param lat - [-90, 90], 90 being north.
      * @return temp - Modeled temperature in celcius.
      */
-    static calc_temp(lat: number): number {
+    static calc_temp(lat: number, lon: number): number {
         var temp = 0.0;
+        var factor = Math.sin((lon/8)*(Math.PI/180))*10;
 
         // inverse
-        lat = -lat;
+        lat = Math.abs(lat);
 
-        if (lat <= -16) temp = (0.86*lat + 13.24);
-        else if ((-16 < lat) && (lat < 20)) temp = 27;
-        else temp = (-0.63*lat + 39.6);
+        if (lat < 20) temp = 27 + factor;
+        else temp = (-0.63*lat + 39.6 + factor);
 
         return temp;
     }
@@ -32,9 +32,9 @@ export class MathModel {
      * @param lat - latitude 90 is north.
      * @returns prep - precipitation.
      */
-    static calc_prep(lat: number): number {
+    static calc_prep(lat: number, lon: number): number {
         var prep = 0.0;
-
+        var factor = Math.sin((lon/16)*(Math.PI/180))*10;
         if (lat <= -50) prep=(1/15)*lat + (19/3);
         else if ((-50 < lat)&&(lat <= -25)) prep=(-3/50)*lat;
         else if ((-25 < lat)&&(lat <= 5)) prep=(2/15)*lat + (29/6);
@@ -42,7 +42,7 @@ export class MathModel {
         else if ((30 < lat)&&(lat <= 50)) prep=(1/40)*lat + (5/4);
         else prep=(-1/15)*lat + (35/6);
 
-        return prep;
+        return prep+factor;
     }
 
     /**

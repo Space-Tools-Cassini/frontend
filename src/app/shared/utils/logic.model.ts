@@ -2,17 +2,23 @@ import { Crop } from "../models/crop.model";
 import { SoilTypes } from "../models/soil-types.module";
 import { MathModel } from "./math-model.model";
 
+// TODO:
+// - Implement more chances for soil_type. reduce the dropping chance.
+// - More natural and precise score model, change the modeling of temperature,
+//   PH.
+// - Return all of the other calculations, and perhaps a reason. 
+
 export class Logic {
     static analize(lat: number, lon: number, crop: Crop): number {
         var score: number = 0;
 
         // Model the variables
-        var point_temp: number = MathModel.calc_temp(lat);
+        var point_temp: number = MathModel.calc_temp(lat, lon);
         var point_ph: number = MathModel.calc_ph(point_temp);
-        var point_prep: number = MathModel.calc_prep(lat);
+        var point_prep: number = MathModel.calc_prep(lat, lon);
 
         // Randomize the Conditionals
-        var soil_type: SoilTypes = Math.floor(Math.random() * (6 + 1));
+        var soil_type: SoilTypes = Math.floor(Math.random() * (5 + 1));
         var co2: number = MathModel.calc_co2(0, 100);
 
         // Conditionals
