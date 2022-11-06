@@ -29,13 +29,13 @@ export class Logic {
         var score: number = 0;
 
         // Model the variables
-        var point_temp: number = MathModel.calc_temp(lat);
+        var point_temp: number = MathModel.calc_temp(lat, lon);
         var point_ph: number = MathModel.calc_ph(point_temp);
-        var point_prep: number = MathModel.calc_prep(lat);
+        var point_prep: number = MathModel.calc_prep(lat, lon);
 
         // Randomize the Conditionals
         
-        console.log
+        
         var co2: number = MathModel.calc_co2(0, 100);
 
         // Conditionals
