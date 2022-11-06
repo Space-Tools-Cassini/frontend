@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import { Entry } from '../entry';
 import { InputService } from '../input.service';
 
+
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -16,8 +17,10 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41]
 });
+
 L.Marker.prototype.options.icon = iconDefault;
 
+export class ButtonOverviewExample {}
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -33,6 +36,7 @@ export class MapComponent implements AfterViewInit {
   constructor(is: InputService) {
     this.is = is;
    }
+  
 
   private initMap(): void {
     this.map = L.map('map', {
