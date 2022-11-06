@@ -2,6 +2,10 @@ import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { Entry } from '../entry';
 import { InputService } from '../input.service';
+import { Crop } from '../shared/models/crop.model';
+import { Cwheat } from '../shared/models/cwheat.model';
+import { Soybean } from '../shared/models/soybean.model';
+import { Logic } from '../shared/utils/logic.model';
 
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -36,7 +40,7 @@ export class MapComponent implements AfterViewInit {
   constructor(is: InputService) {
     this.is = is;
    }
-  
+
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -75,7 +79,8 @@ export class MapComponent implements AfterViewInit {
   }
 
   upload() {
-    alert("Ahora se envíarian las coordenadas (latitud: "+this._entry.latitude+", longitud: "+this._entry.longitude+".");
+    alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)}`);
+
   }
 
   ngAfterViewInit(): void {
