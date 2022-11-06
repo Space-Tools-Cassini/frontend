@@ -26,16 +26,16 @@ import { SoilTypes } from "./soil-types.module";
 */
 export class Crop {
     // Ideal ranges
-    static ideal_temp: [number, number];
-    static ideal_ph:   [number, number];
-    static ideal_prep: [number, number];
+    ideal_temp: [number, number];
+    ideal_ph:   [number, number];
+    ideal_prep: [number, number];
 
     // Thresholds
-    static thresh_temp: [number, number];
-    static thresh_ph:   [number, number];
-    static thresh_prep: [number, number];
+    thresh_temp: [number, number];
+    thresh_ph:   [number, number];
+    thresh_prep: [number, number];
 
     // Conditionals
-    static bad_soil: SoilTypes[];
-    static max_co2: number;
+    bad_soil: SoilTypes[];
+    max_co2: number;
 }

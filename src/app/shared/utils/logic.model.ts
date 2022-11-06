@@ -53,12 +53,13 @@ export class Logic {
         var mean_crop_temp: number = (crop.ideal_temp[1] - crop.ideal_temp[0])/2;
         var mean_crop_prep: number = (crop.ideal_prep[1] - crop.ideal_prep[0])/2;
         var mean_crop_ph: number = (crop.ideal_ph[1] - crop.ideal_ph[0])/2;
-
-        var score = Math.sqrt(
+        score = Math.sqrt(
             Math.pow((point_temp - mean_crop_temp), 2) +
             Math.pow((point_prep - mean_crop_prep), 2) +
             Math.pow((point_ph - mean_crop_ph), 2)
         );
+
+        score = Math.max(0, 100-score);
 
         return score;
     }
