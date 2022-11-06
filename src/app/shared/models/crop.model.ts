@@ -22,18 +22,18 @@
  *                      it if this soil is present; string[].
  * @field max_co2     : Maximum CO2 that a plant can take. From 0 to 100; number.
 */
-export interface Crop {
+export class Crop {
     // Ideal ranges
-    ideal_temp: [number, number];
-    ideal_ph:   [number, number];
-    ideal_prep: [number, number];
+    static ideal_temp: [number, number];
+    static ideal_ph:   [number, number];
+    static ideal_prep: [number, number];
 
     // Thresholds
-    thresh_temp: [number, number];
-    thresh_ph:   [number, number];
-    thresh_prep: [number, number];
+    static thresh_temp: [number, number];
+    static thresh_ph:   [number, number];
+    static thresh_prep: [number, number];
 
     // Conditionals
-    bad_soil: string[];
-    max_co2: number;
+    static bad_soil: string[];
+    static max_co2: number;
 }
