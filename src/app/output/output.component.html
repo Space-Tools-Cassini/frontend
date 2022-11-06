@@ -6,18 +6,24 @@
 <body>
   <div class="general">
       <div class="panel">
+          <div class="paneltext">
+            <p>Your calculated Index of Natural Resources Optimization...</p>
+          </div>
           <div class="score">
               <p>{{score}} %</p>
               <h1>INRO</h1>
+          </div>
+          <div class="paneltext">
+            <p>Point's environment conditions are...</p>
           </div>
           <div class="data_container">
               <table class="customTable">
                   <tbody>
                     <tr>
-                      <td class="arriba">{{input.temp}}</td>
+                      <td class="arriba">{{temp}}</td>
                       <td class="arriba">{{rain}}</td>
                       <td class="arriba">{{ph}}</td>
-                      <td class="arriba">Clay</td>
+                      <td class="arriba">{{soil}}</td>
                       <td class="arriba">56</td>
                     </tr>
                     <tr>
@@ -30,7 +36,7 @@
                   </tbody>
                 </table>
           </div>
-          <p>Your crop will not support Soil Type</p>
+          <!--MESSAGE HERE-->
       </div>
   </div>
 </body>

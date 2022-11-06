@@ -10,8 +10,9 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: black;
   animation: myAnim 2s ease 0s 1 normal forwards;
+  background: rgb(118,63,251);
+  background: linear-gradient(90deg, rgba(118,63,251,1)0%, rgba(243,70,252,1)100%)
 }
 
 .panel{
@@ -23,6 +24,7 @@
   justify-content: space-evenly;
   background-color: white;
   border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.35);
 }
 
 .score{
@@ -73,6 +75,10 @@ table.customTable td, table.customTable th {
 
 table.customTable thead {
   background-color: #82ADFF;
+}
+
+.paneltext p{
+  font-size: 20px;
 }
 
 @keyframes myAnim {

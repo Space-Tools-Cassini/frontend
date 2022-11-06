@@ -1,3 +1,5 @@
+import { Crop } from "./shared/models/crop.model";
+
 export class Entry {
 
   public latitude: number;
@@ -6,6 +8,7 @@ export class Entry {
   public rainfall: number;
   public ph: number;
   public score: number;
+  public soilType: number;
 
   constructor(latitude: number, longitude: number) {
     this.latitude = latitude;

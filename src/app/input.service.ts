@@ -23,11 +23,12 @@ export class InputService {
     this.fire.emit(this.entry);
   }
 
-  updateValues (score: number, temp: number, ph: number, prep: number) {
+  updateValues (score: number, temp: number, ph: number, prep: number, soil: number) {
     this.entry.score = score;
     this.entry.temp = temp;
     this.entry.ph= ph;
     this.entry.rainfall = prep;
+    this.entry.soilType = soil;
     console.log("LA NUEVA LLUVIA ES: "+this.entry.rainfall);
     this.fire.emit(this.entry);
   }

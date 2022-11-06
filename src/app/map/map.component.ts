@@ -1,10 +1,14 @@
+import { R3SelectorScopeMode } from '@angular/compiler';
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { Entry } from '../entry';
 import { InputService } from '../input.service';
 import { Crop } from '../shared/models/crop.model';
 import { Cwheat } from '../shared/models/cwheat.model';
+import { Maize } from '../shared/models/maize.model';
+import { Rice } from '../shared/models/rice.model';
 import { Soybean } from '../shared/models/soybean.model';
+import { Sugarcane } from '../shared/models/sugarcane.model';
 import { Logic } from '../shared/utils/logic.model';
 
 
@@ -36,7 +40,7 @@ export class MapComponent implements AfterViewInit {
   private selection: any;
   is: InputService;
   subscription: any;
-
+  selected: string;
   constructor(is: InputService) {
     this.is = is;
    }
@@ -78,11 +82,34 @@ export class MapComponent implements AfterViewInit {
 
   }
 
+  onSelected(value:string): void {
+		this.selected = value;
+	}
+
   upload() {
-    const score=Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)
-    // alert(`${score}`);
-    this.is.updateValues(score[3],score[0],score[1],score[2]);
-    console.log("la lluvia ahora vale esto chaval: "+this._entry.rainfall);
+    var selected_crop = new Crop();
+    switch(this.selected){
+      case "one":
+        selected_crop = new Cwheat();
+        break;
+      case "two":
+        selected_crop = new Soybean();
+        break;
+      case "three":
+        selected_crop = new Maize();
+        break;
+      case "four":
+        selected_crop = new Sugarcane();
+        break;
+      case "five":
+        selected_crop = new Rice();
+        break;
+      default:
+        selected_crop = new Cwheat();
+        break;
+    }
+    var source = Logic.analize(this._entry.latitude, this._entry.longitude, selected_crop);
+    this.is.updateValues(source[3], source[0], source[1], source[2], source[3]);
   }
 
   ngAfterViewInit(): void {
