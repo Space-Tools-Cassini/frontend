@@ -1,10 +1,14 @@
+import { R3SelectorScopeMode } from '@angular/compiler';
 import { Component, OnInit, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
 import { Entry } from '../entry';
 import { InputService } from '../input.service';
 import { Crop } from '../shared/models/crop.model';
 import { Cwheat } from '../shared/models/cwheat.model';
+import { Maize } from '../shared/models/maize.model';
+import { Rice } from '../shared/models/rice.model';
 import { Soybean } from '../shared/models/soybean.model';
+import { Sugarcane } from '../shared/models/sugarcane.model';
 import { Logic } from '../shared/utils/logic.model';
 
 
@@ -36,7 +40,7 @@ export class MapComponent implements AfterViewInit {
   private selection: any;
   is: InputService;
   subscription: any;
-
+  selected: string;
   constructor(is: InputService) {
     this.is = is;
    }
@@ -78,8 +82,27 @@ export class MapComponent implements AfterViewInit {
 
   }
 
+  onSelected(value:string): void {
+		this.selected = value;
+	}
+
   upload() {
-    alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)}`);
+    console.log(this.selected)
+    if (this.selected=="one"){
+      alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Cwheat)}`);
+    }
+    else if (this.selected=="two"){
+      alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Soybean)}`);
+    }
+    else if (this.selected=="three"){
+      alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Maize)}`);
+    }
+    else if (this.selected=="four"){
+      alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Sugarcane)}`);
+    }
+    else if (this.selected=="five"){
+      alert(`${Logic.analize(this._entry.latitude, this._entry.longitude,new Rice)}`);
+    }
 
   }
 

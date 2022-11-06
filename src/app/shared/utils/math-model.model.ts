@@ -8,7 +8,7 @@ export class MathModel {
         var temp = 0.0;
 
         // inverse
-        lat = -lat;
+        lat = Math.abs(lat);
 
         if (lat <= -16) temp = (0.86*lat + 13.24);
         else if ((-16 < lat) && (lat < 20)) temp = 27;
@@ -52,9 +52,7 @@ export class MathModel {
      * @returns co2 - co2 indicator
      */
     static calc_co2(min: number, max: number): number {
-        var co2 = 0.0;
-
-        var chosen = Math.floor(Math.random() * (max - min + 1) + min);
+        var chosen = Math.random()*100
         var co2 = Math.exp(-(chosen/20))*100
 
         return co2;

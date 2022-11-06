@@ -20,12 +20,13 @@
       [(ngModel)]="longitude"
       placeholder="Longitude"
     />
-    <select class="selText">
-      <option value="one"> Wheat </option>
-      <option value="two"> Soybean </option>
-      <option value="three"> Maize </option>
-      <option value="four"> Sugarcane </option>
-      <option value="five"> Rice </option>
+    <select #croptype (change)="onSelected(croptype.value)" class="selText">
+      <option value="" selected disabled hidden>Select crop type</option>
+      <option value="one">Wheat</option>
+      <option value="two">Soybean</option>
+      <option value="three">Maize</option>
+      <option value="four">Sugarcane</option>
+      <option value="five">Rice</option>
     </select>
   </div>
   <div class="right">
